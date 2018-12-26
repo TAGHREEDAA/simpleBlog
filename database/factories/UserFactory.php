@@ -23,5 +23,6 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->state(App\User::class, 'admin', [
+    'email' => 'admin@mail.com',
     'is_admin' => 1,
 ]);

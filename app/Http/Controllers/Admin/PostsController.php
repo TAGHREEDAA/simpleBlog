@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+
+use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CategoriesController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.posts')->with('posts',Post::all());
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create-post')->with('categories',Category::all());
     }
 
     /**
@@ -44,10 +47,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        $posts = $category->posts;
-        return view('categories.show')->with('posts',$posts);
+        //
     }
 
     /**
@@ -81,6 +83,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('delete post');
     }
 }
