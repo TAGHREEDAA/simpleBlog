@@ -5,6 +5,10 @@
 @section('content')
 
     <section class="content">
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
+
             <div class="row">
                 <div class="col-xs-12">
 
@@ -21,6 +25,7 @@
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Content</th>
+                                    <th>Category</th>
                                     <th>Created By</th>
                                     <th>Created At</th>
                                     <th>Edit</th>
@@ -33,6 +38,7 @@
                                         <td>{{$post->title}}</td>
                                         <td>{{$post->description}}</td>
                                         <td>{{$post->content}}</td>
+                                        <td><span class="label label-success">{{$post->category->name}}</span></td>
                                         <td>{{$post->user->name}}</td>
                                         <td>{{$post->created_at->diffForHumans()}}</td>
                                         <td>
@@ -69,7 +75,7 @@
         $('#posts-table').DataTable({
             'paging'      : true,
             'lengthChange': false,
-            'searching'   : false,
+            'searching'   : true,
             'ordering'    : true,
             'info'        : true,
             'autoWidth'   : false
