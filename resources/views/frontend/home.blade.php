@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    @if($posts->total() === 0)
+        @include('partials._no_results')
+    @endif
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -16,6 +20,7 @@
             @endforeach
 
         </div>
+        <div class="row col-md-8 col-md-offset-2">{{ $posts->links() }}</div>
     </div>
 </div>
 @endsection

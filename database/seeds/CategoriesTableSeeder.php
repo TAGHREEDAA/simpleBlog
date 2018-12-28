@@ -13,6 +13,6 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         Category::truncate();
-        factory(Category::class,3)->create();
+        factory(Category::class,10)->create();
     }
 }

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xs-6">
                 Add New Category
-                @include('_errors')
+                @include('partials._errors')
                 <form action="/admin/categories" method="POST">
                     {{csrf_field()}}
                     {{--name--}}

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xs-6">
                 Add New Post
-                @include('_errors')
+                @include('partials._errors')
                 <form action="/admin/posts" method="POST">
                     {{csrf_field()}}
                     {{--title--}}

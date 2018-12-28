@@ -19,7 +19,7 @@
                         <div class="icon">
                             <i class="fa fa-sitemap"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="/admin/categories" class="small-box-footer">Show All <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
