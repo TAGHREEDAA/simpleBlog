@@ -6,8 +6,10 @@ namespace App\Http\Controllers\Admin;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+
 
 class PostsController extends Controller
 {
@@ -18,7 +20,30 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index')->with('posts',Post::all());
+        return view('admin.posts.index');
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getAjaxData()
+    {
+        $model = Post::with('user');
+
+        return Datatables::of($model)
+            ->addColumn('created_at', function ($post) {
+                return $post->created_at->diffForHumans(); })
+            ->addColumn('category', function ($post) {
+                return '<span class="label label-success">'.$post->category->name.'</span>';})
+            ->addColumn('update', function ($post) {
+                return '<a href="/admin/posts/' . $post->id . '/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>'; })
+            ->addColumn('delete', function ($post) {
+                return '<button class="btn btn-danger btn-delete" data-remote="/admin/posts/' . $post->id . '"><i class="fa fa-remove"></i></button>'; })
+            ->rawColumns(['link1', 'update','delete','category'])
+
+
+            ->make(true);
     }
 
     /**
@@ -102,9 +127,10 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-
-        $post->delete();
-        Session::flash('message', 'Post Is Deleted Successfully');
-        return redirect('/admin/posts');
+        if ($post->delete()) {
+            return response(['message' => 'Post Is Deleted Successfully', 'status' => 'success']);
+        }
+        return response(['message' => 'Failed To Delete Post', 'status' => 'error']);
     }
+
 }

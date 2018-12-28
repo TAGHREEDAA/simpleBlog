@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -18,6 +19,27 @@ class CategoriesController extends Controller
     {
         return view('admin.categories.index')->with('categories',Category::all());
     }
+
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getAjaxData()
+    {
+        $model = Category::query();
+
+        return Datatables::of($model)
+            ->addColumn('created_at', function ($category) {
+                return $category->created_at->diffForHumans(); })
+            ->addColumn('update', function ($category) {
+                return '<a href="/admin/categories/' . $category->id . '/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>'; })
+            ->addColumn('delete', function ($category) {
+                return '<button class="btn btn-danger btn-delete" data-remote="/admin/categories/' . $category->id . '"><i class="fa fa-remove"></i></button>'; })
+            ->rawColumns(['link', 'update','delete'])
+            ->make(true);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -94,8 +116,9 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        Session::flash('message', 'Category Is Deleted Successfully');
-        return redirect('/admin/categories');
+        if ($category->delete()) {
+            return response(['message' => 'Category Is Deleted Successfully', 'status' => 'success']);
+        }
+        return response(['message' => 'Failed To Delete Category', 'status' => 'error']);
     }
 }
