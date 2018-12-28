@@ -14,7 +14,7 @@
                 {{method_field('PUT')}}
 
                     {{--title--}}
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                         <label>Title*</label>
                         <input type="text" name="title" class="form-control" placeholder="Post Title" value="{{(old('title'))? old('title'): $post->title}}" required>
                     </div>
@@ -22,7 +22,7 @@
                     {{--category--}}
                     <div class="form-group">
                         <label>Category*</label>
-                        <select class="form-control" name="category_id" required>
+                        <select class="form-control{{ $errors->has('category_id') ? ' has-error' : '' }}" name="category_id" required>
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}" {{($category->id === $post->category_id)? "selected":""}}>{{$category->name}}</option>
                             @endforeach
@@ -31,13 +31,13 @@
 
 
                 {{--description--}}
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label>Description*</label>
                         <textarea name="description" class="form-control" rows="3" placeholder="Post Description" required>{{(old('description'))? old('description'): $post->description}}</textarea>
                     </div>
 
                 {{--content--}}
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                     <label>Content*</label>
                     <textarea name="content" class="form-control" rows="3" placeholder="Post Content" required>{{(old('content'))? old('content'): $post->content}}</textarea>
                 </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categories.index')->with('categories',Category::all());
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        Category::create($attributes);
+        Session::flash('message', 'Category Is Created Successfully');
+        return redirect('/admin/categories');
     }
 
     /**
@@ -55,9 +63,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit')->with('category',$category);
     }
 
     /**
@@ -67,9 +75,15 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        $category->update($attributes);
+        Session::flash('message', 'Category Is Updated Successfully');
+        return redirect('/admin/categories');
     }
 
     /**
@@ -78,8 +92,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        Session::flash('message', 'Category Is Deleted Successfully');
+        return redirect('/admin/categories');
     }
 }

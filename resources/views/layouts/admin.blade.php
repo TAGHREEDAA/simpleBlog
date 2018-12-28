@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <title>
         @yield('title','Admin Dashboard')
     </title>
@@ -15,7 +22,7 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>B</b>log</span>
             <!-- logo for regular state and mobile devices -->
@@ -106,7 +113,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content container-fluid">
+        <section class="content container-fluid" id="app">
             @yield('content')
         </section>
         <!-- /.content -->
@@ -201,5 +208,8 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
+
+@yield('script')
+
 </body>
 </html>

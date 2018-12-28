@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','All Posts')
+@section('title','All Categories')
 
 @section('content')
 
@@ -14,38 +14,30 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Posts Data</h3>
-                            <a class="btn btn-primary pull-right" href="/admin/posts/create">Add new post</a>
+                            <h3 class="box-title">Categories Data</h3>
+                            <a class="btn btn-primary pull-right" href="/admin/categories/create">Add New Category</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="posts-table" class="table table-bordered table-striped">
+                            <table id="categories-table" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Content</th>
-                                    <th>Category</th>
-                                    <th>Created By</th>
+                                    <th>Category Name</th>
                                     <th>Created At</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($posts as $post)
+                                @foreach($categories as $category)
                                     <tr>
-                                        <td>{{$post->title}}</td>
-                                        <td>{{$post->description}}</td>
-                                        <td>{{$post->content}}</td>
-                                        <td><span class="label label-success">{{$post->category->name}}</span></td>
-                                        <td>{{$post->user->name}}</td>
-                                        <td>{{$post->created_at->diffForHumans()}}</td>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->created_at->diffForHumans()}}</td>
                                         <td>
-                                            <a class="btn btn-warning" href="/admin/posts/{{$post->id}}/edit"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-warning" href="/admin/categories/{{$category->id}}/edit"><i class="fa fa-edit"></i></a>
                                         </td>
                                         <td>
-                                            <form action="/admin/posts/{{$post->id}}" method="POST">
+                                            <form action="/admin/categories/{{$category->id}}" method="POST">
                                                 {{csrf_field()}}
                                                 {{method_field('DELETE')}}
                                                 <button class="btn btn-danger" type="submit">
@@ -77,7 +69,7 @@
     <script>
         $(function () {
 
-            $('#posts-table').DataTable({
+            $('#categories-table').DataTable({
                 'paging'      : true,
                 'lengthChange': false,
                 'searching'   : true,
