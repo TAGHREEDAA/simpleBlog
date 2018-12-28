@@ -14,6 +14,10 @@
         @yield('title','Admin Dashboard')
     </title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    {{--<link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">--}}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -208,6 +212,9 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap.min.js"></script>
+
 
 @yield('script')
 

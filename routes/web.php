@@ -21,6 +21,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin/', 'namespace' => 'A
     Route::get('/', 'DashboardController@index');
     Route::resource('posts', 'PostsController');
     Route::resource('categories','CategoriesController');
+    Route::get('datatables/posts','PostsController@getAjaxData')->name('datatables.posts');
+    Route::get('datatables/categories','CategoriesController@getAjaxData')->name('datatables.categories');
 });
 
 
