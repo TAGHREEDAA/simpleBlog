@@ -4,7 +4,13 @@ explore blog posts.
 Also it contains admin dashboard to add, edit, delete, and update
 posts and categories.
 
-###installation
+### Prerequisites
+You need to have laravel environment installed on your machine
+ex: Laravel Homestead / apache server 
+see: https://laravel.com/docs/5.7#server-requirements
+
+
+### installation
 
 `git clone https://github.com/TAGHREEDAA/simpleBlog project`
 
@@ -22,7 +28,7 @@ posts and categories.
 
 `php artisan serve`
 
-####Routes
+#### Routes
 `/admin` => admin dashboard
 
 - email: `admin@mail.com`
