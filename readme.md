@@ -28,7 +28,9 @@ see: https://laravel.com/docs/5.7#server-requirements
 
 `php artisan serve`
 
-#### Routes
+### Routes
+
+#### Admins
 `/admin` => Admin Dashboard
 
 - email: `admin@mail.com`
@@ -38,7 +40,11 @@ see: https://laravel.com/docs/5.7#server-requirements
 
 `/admin/posts` => Get All Posts & CRUD Operations
 
-#### Testing
+#### User Interface
+`/` => Show all posts 
+`/categories/{id}` => Show category posts.
+
+### Testing
 
 `cd project`
 
