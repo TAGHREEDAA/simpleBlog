@@ -65,8 +65,8 @@
                     {data:'title', name: 'title'},
                     {data:'description', name: 'description'},
                     {data:'content', name: 'content'},
-                    {data:'user.name', name: 'content'},
                     {data:'category', name: 'category'},
+                    {data:'user.name', name: 'content'},
                     {data:'created_at', name: 'created_at'},
                     {data: 'update', name: 'update', orderable: false, searchable: false},
                     {data: 'delete', name: 'delete', orderable: false, searchable: false}
