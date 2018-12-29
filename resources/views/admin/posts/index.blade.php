@@ -23,6 +23,7 @@
                             <table id="posts-table" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Content</th>
@@ -60,6 +61,7 @@
                 'serverSide'    : true,
                 'ajax'          : '{!! route('datatables.posts') !!}',
                 'columns'       : [
+                    {data:'id', name: 'id', visible:false},
                     {data:'title', name: 'title'},
                     {data:'description', name: 'description'},
                     {data:'content', name: 'content'},
@@ -70,6 +72,7 @@
                     {data: 'delete', name: 'delete', orderable: false, searchable: false}
 
                 ],
+                "order"         : [0,'desc'],
                 'paging'        : true,
                 'lengthChange'  : false,
                 'searching'     : true,

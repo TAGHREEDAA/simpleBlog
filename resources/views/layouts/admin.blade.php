@@ -68,10 +68,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -98,7 +95,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 {{--<li class="header">HEADER</li>--}}
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="/admin/categories"><i class="fa fa-link"></i> <span>Categories</span></a></li>
+                <li><a href="/admin/categories"><i class="fa fa-link"></i> <span>Categories</span></a></li>
                 <li><a href="/admin/posts"><i class="fa fa-link"></i> <span>Posts</span></a></li>
 
             </ul>
@@ -214,7 +211,6 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap.min.js"></script>
-
 
 @yield('script')
 

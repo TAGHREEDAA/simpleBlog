@@ -12,7 +12,8 @@ class PostsController extends Controller
      * @param Post $post
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Post $post){
-        return view('frontend.posts.show')->with(['post'=>$post]);
+    public function show(Post $post)
+    {
+        return view('frontend.posts.show')->with(['post' => $post]);
     }
 }

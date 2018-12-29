@@ -10,7 +10,7 @@ ex: Laravel Homestead / apache server
 see: https://laravel.com/docs/5.7#server-requirements
 
 
-### installation
+### Installation
 
 `git clone https://github.com/TAGHREEDAA/simpleBlog project`
 
@@ -29,7 +29,17 @@ see: https://laravel.com/docs/5.7#server-requirements
 `php artisan serve`
 
 #### Routes
-`/admin` => admin dashboard
+`/admin` => Admin Dashboard
 
 - email: `admin@mail.com`
 - password: `secret` 
+
+`/admin/categories`  => Get All Categories & CRUD Operations
+
+`/admin/posts` => Get All Posts & CRUD Operations
+
+#### Testing
+
+`cd project`
+
+`phpunit`

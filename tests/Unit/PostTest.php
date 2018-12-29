@@ -13,6 +13,7 @@ class PostTest extends TestCase
 {
     use RefreshDatabase;
 
+
     function test_post_belongs_to_category()
     {
         // setup: to create post you need user_id and category_id
@@ -21,8 +22,8 @@ class PostTest extends TestCase
 
         // create post
         $post = factory(Post::class)->create([
-            'category_id'=> $category->id,
-            'user_id'=> $user->id,
+            'category_id' => $category->id,
+            'user_id' => $user->id,
         ]);
 
         // check post belongs to a category
@@ -38,8 +39,8 @@ class PostTest extends TestCase
 
         // create post
         $post = factory(Post::class)->create([
-            'category_id'=> $category->id,
-            'user_id'=> $user->id,
+            'category_id' => $category->id,
+            'user_id' => $user->id,
         ]);
 
         // check post belongs to a user

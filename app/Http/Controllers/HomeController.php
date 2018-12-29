@@ -17,7 +17,6 @@ class HomeController extends Controller
     {
         $posts = Post::paginate(10);
 
-
         return view('frontend.home')->with('posts', $posts);
     }
 }

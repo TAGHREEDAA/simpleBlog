@@ -15,7 +15,7 @@ class CategoriesController extends Controller
     public function show(Category $category)
     {
         $posts = $category->posts()->paginate(5);
-        return view('frontend.categories.show')->with('posts',$posts);
+        return view('frontend.categories.show')->with('posts', $posts);
     }
 
 }

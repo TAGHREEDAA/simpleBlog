@@ -13,15 +13,17 @@ class CategoriesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('admin.categories.index')->with('categories',Category::all());
+        return view('admin.categories.index')->with('categories', Category::all());
     }
 
 
     /**
+     * Get data in json format for datatables
+     *
      * @return mixed
      * @throws \Exception
      */
@@ -31,20 +33,21 @@ class CategoriesController extends Controller
 
         return Datatables::of($model)
             ->addColumn('created_at', function ($category) {
-                return $category->created_at->diffForHumans(); })
+                return $category->created_at->diffForHumans();
+            })
             ->addColumn('update', function ($category) {
-                return '<a href="/admin/categories/' . $category->id . '/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>'; })
+                return '<a href="/admin/categories/' . $category->id . '/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>';
+            })
             ->addColumn('delete', function ($category) {
-                return '<button class="btn btn-danger btn-delete" data-remote="/admin/categories/' . $category->id . '"><i class="fa fa-remove"></i></button>'; })
-            ->rawColumns(['link', 'update','delete'])
+                return '<button class="btn btn-danger btn-delete" data-remote="/admin/categories/' . $category->id . '"><i class="fa fa-remove"></i></button>';
+            })
+            ->rawColumns(['link', 'update', 'delete'])
             ->make(true);
     }
 
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -54,7 +57,7 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -71,7 +74,7 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,20 +85,20 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit')->with('category',$category);
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Category $category)
     {
@@ -111,8 +114,9 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
     public function destroy(Category $category)
     {
