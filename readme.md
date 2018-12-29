@@ -20,6 +20,8 @@ see: https://laravel.com/docs/5.7#server-requirements
 
 `cp .env.example .env  #THEN EDIT YOUR ENV FILE ACCORDING TO YOUR OWN SETTINGS.`
 
+`php artisan key:generate`
+
 `npm install`
 
 `php artisan migrate --seed`
@@ -42,6 +44,7 @@ see: https://laravel.com/docs/5.7#server-requirements
 
 #### User Interface
 `/` => Show all posts 
+
 `/categories/{id}` => Show category posts.
 
 ### Testing
